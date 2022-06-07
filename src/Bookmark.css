@@ -1,0 +1,148 @@
+.bookmark {
+  margin-left: 0;
+  padding-left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 100;
+}
+
+.bookmarkpage-col{
+
+  height: 100vh;
+  width: 25%;
+  }
+
+
+.bookmark-panel {
+  color: black;
+  height: 100vh;
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+  z-index: 200;
+}
+
+.bookmark-col {
+  color: aliceblue;
+}
+
+.bookmark-col:hover {
+  color: aliceblue;
+  font-size: '25px';
+}
+
+.bookmark-row {
+  background-color: rgba(28, 53, 73, .7);
+  height: 50vh;
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+  z-index: 550;
+  justify-content: space-between;
+}
+
+.bookmark-endrow {
+  background-color: rgba(28, 53, 73, .7);
+  height: 25vh;
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+  justify-content: space-between;
+}
+
+.bookmark-panel-left {
+  padding-left: 0;
+}
+
+.bookmark-panel-right {
+  padding-left: 0;
+}
+
+.bookmark-group {
+  padding-left: 0;
+}
+
+.page-col{
+
+  height: 100vh;
+  width: 75%;
+  }
+
+.icon-panel {
+  color: black;
+  height: 100vh;
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+  z-index: 1000;
+}
+
+.icon-col {
+  color: white;
+  /* also change the blend mode to what suits you, from darken, to other 
+  many options as you deem fit */
+}
+
+.icon-col:hover {
+  color: aqua;
+
+}
+
+.icon-row {
+ 
+  height: 50vh;
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+  justify-content: space-between;
+  z-index: 1100;
+}
+
+.icon-endrow {
+ 
+  height: 25vh;
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+  justify-content: space-between;
+}
+
+.bookmark-panel-left {}
+
+.bookmark-panel-right {}
+
+.bookmark-group {}
+
+.refButton{
+  background-color: transparent;
+  color:aliceblue;
+  z-index: 10000;
+}
+
+.headingtitle {
+  color: aliceblue;
+  font-family: 'Tahoma'
+}
+
+.headingtitle:hover {
+  color: gray;
+}
+
+.headingbuttontitle {
+ color: grey;
+ background-color: rgba(28, 53, 73, .0); 
+ outline-color: rgba(28, 53, 73, .0); 
+  border: 0;
+}
+.headingbuttontitle:hover {
+  color: aliceblue;
+ background-color: rgba(28, 53, 73, .0); 
+ outline-color: rgba(28, 53, 73, .0);
+   border: 0;
+}
+.headingbuttontitle:active {
+  color: aliceblue;
+ background-color: rgba(28, 53, 73, .0); 
+ outline-color: rgba(28, 53, 73, .0); 
+ border: 0;
+}
