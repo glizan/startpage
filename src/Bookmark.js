@@ -1,24 +1,83 @@
 import "./Bookmark.css"
 
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBaseballBatBall, faBeer, faCode, faDumpsterFire, faEnvelope, faHeadSideVirus, fas, faMoneyBillTrendUp, faSchool, faCloud } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faFontAwesome, faRedditAlien, faGithub, faReact, faBootstrap, faGoogle, faFirefox, faFirefoxBrowser, faJs, faReacteurope, faYoutube, faFreeCodeCamp, faStackOverflow, faJava } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBaseballBatBall, faBeer, faCode, faDumpsterFire, faBookOpenReader, faMagnifyingGlass, faHeadSideVirus, fas, faMoneyBillTrendUp, faSchool, faCloud } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFontAwesome, faRedditAlien, faGithub, faDev, faReact, faCss3, faBootstrap, faGoogle, faFirefox, faFirefoxBrowser, faJs, faReacteurope, faYoutube, faFreeCodeCamp, faStackOverflow, faJava } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 import { Container } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import { faNewspaper } from "@fortawesome/free-regular-svg-icons"
-import { hover } from "@testing-library/user-event/dist/hover"
+import { faNewspaper } from "@fortawesome/free-regular-svg-icons";
+import { hover } from "@testing-library/user-event/dist/hover";
+
+
 
 library.add(fas, faTwitter, faFontAwesome)
 
+const categoryElements = [
+    { title: "Productivity", id: "productivity" },
+    { title: "Reference", id: "reference" },
+    { title: "Information", id: "information" },
+    { title: "Entertainment", id: "entertainment" },
+];
+
+
+const productivityElements = [
+    { href: "https://github.com/glizan", icon: faGithub },
+    { href: "https://www.icloud.com", icon: faCloud },
+    { href: "https://www.duckduckgo.com", icon: faMagnifyingGlass },
+];
+
+const referenceElements = [
+    { href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide", icon: faJava },
+    { href: "https://reactjs.org/", icon: faReact },
+    { href: "https://fontawesome.com/", icon: faFontAwesome },
+    { href: "https://www.w3schools.com/", icon: faSchool },
+    { href: "https://www.freecodecamp.org/", icon: faFreeCodeCamp },
+    { href: "https://www.codecademy.com", icon: faCode },
+    { href: "https://stackoverflow.com/", icon: faStackOverflow },
+    { href: "https://tailwindcss.com/", icon: faCss3 },
+];
+
+const newsElements = [
+    { href: "https://www.motherjones.com", icon: faHeadSideVirus },
+    { href: "https://www.drudgereport.com", icon: faNewspaper },
+    { href: "https://news.google.com/topstories?hl=en-CA&gl=CA&ceid=CA:en", icon: faDumpsterFire },
+    { href: "https://www.thestreet.com", icon: faMoneyBillTrendUp },
+];
+
+const entertainmentElements = [
+    { href: "https://www.reddit.com/", icon: faRedditAlien },
+    { href: "https://www.mlb.com", icon: faBaseballBatBall },
+    { href: "https://www.barstoolsports.com", icon: faBeer },
+    { href: "https://bleacherreport.com/", icon: faBookOpenReader },
+    { href: "https://devrant.com/feed", icon: faDev },
+    { href: "https://www.youtube.com", icon: faYoutube },
+];
+
+function renderCategoryElements() {
+    return (
+        categoryElements.map(d => <Col className="bookmark-col align-content-stretch my-auto" sm="12" md="12" lg="12" >
+            <button className="headingbuttontitle" id={d.id} variant="" type='null' style={{ float: 'right', }} onFocus={(e) => onFocusHandler(d.id, e)} onClick={(e) => handleClick(d.id, e)} ><h2 className="headingbuttontitle" >
+                {d.title}</h2></button>
+        </Col>)
+    );
+}
+
+function renderIconElements(elements) {
+    return (
+        elements.map(d => <Button className="refButton" href={d.href} style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={d.icon} size="4x" />
+        </Button>)
+    );
+}
+
 
 function handleClick(id, event) {
-    console.log('event.currentTarget.dataset.id', id); // >> id
     document.querySelector("#first").style.visibility = "hidden";
     document.querySelector("#second").style.visibility = "hidden";
     document.querySelector("#third").style.visibility = "hidden";
@@ -37,13 +96,12 @@ function handleClick(id, event) {
         case 'entertainment':
             document.querySelector("#fourth").style.visibility = "visible";
             break;
-        default: console.log("default");
+        default: ;
 
     }
 
 }
 function handleMouseEnter(event) {
-    console.log("Enter " + event.target.id);
     //   event.visible = true;
     //    event.target.style.visible = "visible";
     //    event.target.style.backgroundColor = "green";
@@ -51,14 +109,12 @@ function handleMouseEnter(event) {
     //    element.visible = "visible";
 }
 function handleMouseLeave(event) {
-    console.log("Leave " + event.target.id);
     document.querySelector("#first").style.visibility = "hidden";
     document.querySelector("#second").style.visibility = "hidden";
     document.querySelector("#third").style.visibility = "hidden";
     document.querySelector("#fourth").style.visibility = "hidden";
 }
 function onFocusHandler(id, event) {
-    console.log('on Focus', id); // >> id
     document.querySelector("#first").style.visibility = "hidden";
     document.querySelector("#second").style.visibility = "hidden";
     document.querySelector("#third").style.visibility = "hidden";
@@ -77,18 +133,15 @@ function onFocusHandler(id, event) {
         case 'entertainment':
             document.querySelector("#fourth").style.visibility = "visible";
             break;
-        default: console.log("default");
+        default: ;
 
     }
 }
 
 function Bookmark() {
 
-
-
     return (
         <>
-
             <Container className="bookmark m-0 p-0" >
                 <Row>
                     <Col className="bookmarkpage-col" sm={3} md={3} lg={3}>
@@ -96,27 +149,10 @@ function Bookmark() {
                             <Row className="bookmark-endrow m-0 p-0">
                             </Row>
                             <Row className="bookmark-row m-0 p-0 align-items-stretch align-content-stretch" sm={9} md={9} lg={9}>
-                                <Col className="bookmark-col align-content-stretch my-auto" sm="12" md="12" lg="12" >
-                                    <button className="headingbuttontitle" id="productivity" variant="" type='null' style={{ float: 'right', }} onFocus={(e) => onFocusHandler("productivity", e)} onClick={(e) => handleClick("productivity", e)} ><h2 className="headingbuttontitle" >
-                                        Productivity</h2></button>
-                                </Col>
-                                <Col className="bookmark-col align-content-stretch my-auto" sm="12" md="12" llg="12">
-                                    <button className="headingbuttontitle" id="reference" variant="" type='null' style={{ float: 'right', }} onFocus={(e) => onFocusHandler("reference", e)} onClick={(e) => handleClick("reference", e)} ><h2 className="headingbuttontitle" >
-                                        Reference</h2></button>
-                                </Col>
-                                <Col className="bookmark-col align-content-stretch my-auto" sm="12" md="12" llg="12">
-                                    <button className="headingbuttontitle" id="information" variant="" type='null' style={{ float: 'right', }} onFocus={(e) => onFocusHandler("information", e)} onClick={(e) => handleClick("information", e)}><h2 className="headingbuttontitle" >
-                                        Information</h2></button>
-                                </Col>
-                                <Col className="bookmark-col align-content-stretch my-auto" sm="12" md="12" llg="12">
-                                    <button className="headingbuttontitle" id="entertainment" variant="" type='null' style={{ float: 'right', }} onFocus={(e) => onFocusHandler("entertainment", e)} onClick={(e) => handleClick("entertainment", e)}><h2 className="headingbuttontitle" >
-                                        Entertainment</h2></button>
-
-                                </Col>
+                                {renderCategoryElements()}
                             </Row>
                             <Row className="bookmark-endrow m-0 p-0 ">
                             </Row>
-
                         </Container>
                     </Col>
                     <Col className="page-col" sm={9} md={9} lg={9}>
@@ -124,89 +160,21 @@ function Bookmark() {
                             <Row className="icon-endrow m-0 p-0">
                             </Row>
                             <Row className="icon-row m-0 p-0 align-items-stretch align-content-stretch">
-                                <Col className="icon-col align-content-stretch my-auto" sm="12"  md="12" lg="12" id="first"   onMouseLeave={handleMouseLeave}>
-                                    <Button className="refButton" href="https://github.com/glizan" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faGithub} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://www.icloud.com" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faCloud} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="/" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faFirefox} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="http://localhost/~graden/Start/index.html" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faFirefoxBrowser} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://www.google.com" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faGoogle} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link">
-                                        <FontAwesomeIcon icon={faCode} size="4x" />
-                                    </Button>
+                                <Col className="icon-col align-content-stretch my-auto" sm="12" md="12" lg="12" id="first" onMouseLeave={handleMouseLeave}>
+                                    {renderIconElements(productivityElements)}
                                 </Col>
-                                <Col className="icon-col align-content-stretch my-auto" sm="12"  md="12" lg="12" id="second" onMouseLeave={handleMouseLeave}>
-                                    <Button className="refButton" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faJava} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://reactjs.org" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faReact} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://react-bootstrap.netlify.app/" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faReacteurope} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://getbootstrap.com" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faBootstrap} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://fontawesome.com/" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faFontAwesome} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://www.w3schools.com/" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faSchool} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://www.freecodecamp.org/" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faFreeCodeCamp} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://www.codecademy.com" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faCode} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://stackoverflow.com/" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faStackOverflow} size="4x" />
-                                    </Button>
+                                <Col className="icon-col align-content-stretch my-auto" sm="12" md="12" lg="12" id="second" onMouseLeave={handleMouseLeave}>
+                                    {renderIconElements(referenceElements)}
                                 </Col>
-                                <Col className="icon-col align-content-stretch my-auto" sm="12"  md="12" lg="12" id="third" onMouseLeave={handleMouseLeave}>
-
-                                    <Button className="refButton" href="https://www.motherjones.com" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faHeadSideVirus} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://www.drudgereport.com" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faNewspaper} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://news.google.com/topstories?hl=en-CA&gl=CA&ceid=CA:en" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faDumpsterFire} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://www.thestreet.com" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faMoneyBillTrendUp} size="4x" />
-                                    </Button>
+                                <Col className="icon-col align-content-stretch my-auto" sm="12" md="12" lg="12" id="third" onMouseLeave={handleMouseLeave}>
+                                    {renderIconElements(newsElements)}
                                 </Col>
-                                <Col className="icon-col align-content-stretch my-auto" sm="12"  md="12" lg="12" id="fourth" onMouseLeave={handleMouseLeave}>
-                                    <Button className="refButton" href="https://www.reddit.com/" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faRedditAlien} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://www.mlb.com" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faBaseballBatBall} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://www.barstoolsports.com" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faBeer} size="4x" />
-                                    </Button>
-                                    <Button className="refButton" href="https://www.youtube.com" style={{ backgroundColor: 'transparent', color: 'aliceblue' }} variant="link" target="_blank" rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faYoutube} size="4x" />
-                                    </Button>
-
+                                <Col className="icon-col align-content-stretch my-auto" sm="12" md="12" lg="12" id="fourth" onMouseLeave={handleMouseLeave}>
+                                    {renderIconElements(entertainmentElements)}
                                 </Col>
                             </Row>
                             <Row className="icon-endrow m-0 p-0 ">
                             </Row>
-
                         </Container>
                     </Col>
                 </Row>
